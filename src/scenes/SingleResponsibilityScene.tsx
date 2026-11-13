@@ -11,7 +11,7 @@ export function SingleResponsibilityScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">06 · refatoração · o cálculo</div>
+        <div className="eyebrow">07 · refatoração · o cálculo</div>
         <h2>
           O cálculo sai
           <br />

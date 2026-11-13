@@ -22,7 +22,7 @@ export function PatternTypesScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">03 · os tipos</div>
+        <div className="eyebrow">04 · os tipos</div>
         <h2>
           Três famílias.
           <br />
@@ -33,8 +33,8 @@ export function PatternTypesScene() {
           delas.
         </p>
         <div className="note">
-          Comportamento: o Strategy. É o padrão que troca o aviso sem mexer no
-          pedido.
+          Comportamento: o Strategy, que acabamos de ver. Ele troca o aviso sem
+          mexer no pedido.
         </div>
       </div>
       <div className="stage">

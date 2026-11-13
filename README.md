@@ -1,6 +1,6 @@
 # Café com código — React
 
-Uma história interativa sobre Design Patterns, com 11 cenas animadas e uma refatoração em TypeScript.
+Uma história interativa sobre Design Patterns, com 12 cenas animadas e uma refatoração em TypeScript.
 
 ## Rodar na sua máquina
 

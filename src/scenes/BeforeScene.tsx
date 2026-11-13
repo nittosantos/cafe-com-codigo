@@ -5,7 +5,7 @@ export function BeforeScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">05 · como está o código</div>
+        <div className="eyebrow">06 · como está o código</div>
         <h2>
           O caos tem
           <br />

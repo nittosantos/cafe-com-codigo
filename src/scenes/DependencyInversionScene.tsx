@@ -12,7 +12,7 @@ export function DependencyInversionScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">08 · padrão · strategy</div>
+        <div className="eyebrow">09 · padrão · strategy</div>
         <h2>
           O aviso troca.
           <br />

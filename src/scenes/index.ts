@@ -7,7 +7,8 @@ export { OpeningScene } from "./OpeningScene.tsx";
 export { OpenClosedScene } from "./OpenClosedScene.tsx";
 export { PatternTypesScene } from "./PatternTypesScene.tsx";
 export { SimulationScene } from "./SimulationScene.tsx";
+export { StrategyScene } from "./StrategyScene.tsx";
 export { SingleResponsibilityScene } from "./SingleResponsibilityScene.tsx";
 export { WhatIsPatternScene } from "./WhatIsPatternScene.tsx";
 
-export const TOTAL_CENAS = 11;
+export const TOTAL_CENAS = 12;

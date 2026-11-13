@@ -14,6 +14,7 @@ import {
   PatternTypesScene,
   SimulationScene,
   SingleResponsibilityScene,
+  StrategyScene,
   TOTAL_CENAS,
   WhatIsPatternScene,
 } from "./scenes/index.ts";
@@ -29,6 +30,7 @@ export default function App() {
       <main>
         <OpeningScene onStart={() => go(1)} />
         <WhatIsPatternScene />
+        <StrategyScene />
         <PatternTypesScene />
         <ChaosScene />
         <BeforeScene />

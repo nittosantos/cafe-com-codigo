@@ -5,7 +5,7 @@ export function ChaosScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">04 · o problema</div>
+        <div className="eyebrow">05 · o problema</div>
         <h2>
           O barista faz
           <br />

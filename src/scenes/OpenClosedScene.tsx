@@ -5,7 +5,7 @@ export function OpenClosedScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">07 · refatoração · o cardápio</div>
+        <div className="eyebrow">08 · refatoração · o cardápio</div>
         <h2>
           O cardápio abre
           <br />

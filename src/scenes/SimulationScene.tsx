@@ -27,7 +27,7 @@ export function SimulationScene() {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">10 · o strategy em ação</div>
+        <div className="eyebrow">11 · o strategy em ação</div>
         <h2>
           Mesma compra.
           <br />
