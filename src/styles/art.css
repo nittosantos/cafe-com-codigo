@@ -10,14 +10,16 @@
   inset: 10%;
   border: 1px solid #3c4b3d;
   border-radius: 50%;
+  animation: spin 46s linear infinite;
 }
 
 .orbit:after {
   content: "";
   position: absolute;
   inset: 15%;
-  border: 1px dashed #3c4b3d;
+  border: 1px dashed #5d7a52;
   border-radius: 50%;
+  animation: spin 28s linear infinite reverse;
 }
 
 .cup {
@@ -30,11 +32,12 @@
   border-radius: 8px 8px 50px 50px;
   transform: rotate(-9deg);
   box-shadow: 0 25px 50px #0004;
-  z-index: 2;
+  z-index: 4;
   display: grid;
   place-items: center;
   color: #263b2e;
   font-size: 47px;
+  animation: glow 4.8s ease-in-out infinite;
 }
 
 .cup:after {
@@ -76,9 +79,30 @@
   padding: 17px 20px;
   font-family: monospace;
   font-size: 14px;
-  box-shadow: 0 15px 30px #0003;
-  z-index: 3;
+  border: 2px solid #1b2c21;
+  box-shadow: 4px 4px 0 #101a17;
+  z-index: 1;
+  max-width: 44%;
   animation: float 5s ease-in-out infinite;
+  transition:
+    scale 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.ticket:hover {
+  scale: 1.04;
+  box-shadow: 8px 8px 0 #101a17;
+}
+
+.ticket:before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 22%;
+  width: 44px;
+  height: 12px;
+  background: #f3ab70d0;
+  rotate: -4deg;
 }
 
 .ticket b {
@@ -88,23 +112,25 @@
 }
 
 .t1 {
-  left: 1%;
-  top: 16%;
-  transform: rotate(-12deg);
+  left: 0;
+  top: 0;
+  transform: rotate(-7deg);
 }
 
 .t2 {
   right: 0;
-  top: 28%;
+  top: 0;
+  max-width: 46%;
   animation-delay: -2s;
-  transform: rotate(9deg);
+  transform: rotate(6deg);
 }
 
 .t3 {
-  left: 8%;
-  bottom: 6%;
+  left: 0;
+  bottom: 18%;
+  max-width: 50%;
   animation-delay: -1s;
-  transform: rotate(-4deg);
+  transform: rotate(-3deg);
 }
 
 .tiny {
@@ -130,18 +156,43 @@
 
 .role {
   padding: 10px 15px;
-  background: #1c2b23;
-  border: 1px solid #42513c;
-  border-radius: 12px;
+  background-color: #1c2b23;
+  background-image: radial-gradient(#d1ef8322 1.1px, transparent 1.1px);
+  background-size: 8px 8px;
+  border: 2px solid var(--lime);
+  border-radius: 4px 16px 6px 12px;
+  box-shadow: 4px 4px 0 #101a17;
   flex: 1;
   text-align: center;
   animation: float 5s infinite;
+  rotate: -1.8deg;
+  transition:
+    scale 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.role:hover {
+  scale: 1.05;
+  box-shadow: 8px 8px 0 #101a17;
+}
+
+.role:nth-child(2) {
+  border-color: var(--orange);
+  rotate: 1.6deg;
+  animation-delay: -1.7s;
+}
+
+.role:nth-child(3) {
+  border-color: #e8e2ce;
+  rotate: -0.7deg;
+  animation-delay: -3.4s;
 }
 
 .role span {
   display: block;
   font-size: 42px;
   margin-bottom: 4px;
+  animation: wobble 3.2s ease-in-out infinite;
 }
 
 .role b {
@@ -157,12 +208,12 @@
   line-height: 1.25;
 }
 
-.role:nth-child(2) {
-  animation-delay: -1.7s;
+.role:nth-child(2) span {
+  animation-delay: -1s;
 }
 
-.role:nth-child(3) {
-  animation-delay: -3.4s;
+.role:nth-child(3) span {
+  animation-delay: -2s;
 }
 
 .pattern-flow {
@@ -174,10 +225,33 @@
 }
 
 .pattern-step {
-  border: 1px solid #40513d;
-  background: #1c2b23;
-  border-radius: 12px;
+  border: 2px solid var(--lime);
+  background-color: #1c2b23;
+  background-image: radial-gradient(#d1ef8318 1px, transparent 1px);
+  background-size: 9px 9px;
+  border-radius: 4px 18px 6px 16px;
   padding: 24px;
+  box-shadow: 6px 6px 0 #101a17;
+  rotate: -0.5deg;
+  transition:
+    scale 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.pattern-step:hover {
+  scale: 1.03;
+  border-color: var(--paper);
+  box-shadow: 10px 10px 0 #101a17;
+}
+
+.pattern-step:nth-child(3) {
+  border-color: var(--orange);
+  rotate: 0.55deg;
+}
+
+.pattern-step:nth-child(5) {
+  rotate: -0.35deg;
 }
 
 .pattern-step small {
@@ -201,6 +275,15 @@
 
 .pattern-arrow {
   color: var(--lime);
-  text-align: center;
-  font-size: 29px;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lime);
+  border-radius: 50%;
+  background: #101a17;
+  font-size: 20px;
+  box-shadow: 3px 3px 0 #f3ab70;
+  animation: bob 1.6s ease-in-out infinite;
 }

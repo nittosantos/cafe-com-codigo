@@ -10,16 +10,31 @@
   overflow: hidden;
 }
 
-.scene:before {
+.scene:before,
+.scene:after {
   content: "";
   position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: drift 16s ease-in-out infinite;
+}
+
+.scene:before {
   right: -20%;
   top: 10%;
   width: 60vw;
   height: 60vw;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, #354c3025, transparent 65%);
-  pointer-events: none;
+  background: radial-gradient(ellipse, #d1ef8318, transparent 65%);
+}
+
+.scene:after {
+  left: -18%;
+  bottom: -25%;
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(ellipse, #f3ab7016, transparent 68%);
+  animation-duration: 22s;
+  animation-direction: reverse;
 }
 
 .eyebrow {
@@ -54,6 +69,7 @@ h2 em {
   font-family: Georgia, serif;
   font-weight: 400;
   color: var(--lime);
+  animation: sheen 7s ease-in-out infinite;
 }
 
 p {
@@ -71,12 +87,14 @@ p strong {
 .tag {
   display: inline-flex;
   gap: 10px;
-  border: 1px solid #405044;
+  border: 2px dashed var(--lime);
   border-radius: 100px;
   padding: 8px 14px;
   font-size: 14px;
   color: var(--muted);
   margin-top: 20px;
+  rotate: -1.5deg;
+  box-shadow: 3px 3px 0 #101a17;
 }
 
 .primary {
@@ -90,6 +108,25 @@ p strong {
   align-items: center;
   gap: 28px;
   font-weight: 600;
+  border: 2px solid #101a17;
+  box-shadow: 4px 4px 0 var(--orange);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.primary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--orange);
+}
+
+.primary span {
+  display: inline-block;
+  transition: transform 0.25s;
+}
+
+.primary:hover span {
+  transform: translateY(4px);
 }
 
 .stage {
@@ -106,8 +143,65 @@ p strong {
   transform: none;
 }
 
-.active .stage {
-  animation: appear 0.8s both;
+.scene[data-on="1"] .reveal > .eyebrow,
+.scene[data-on="1"] .reveal > h1,
+.scene[data-on="1"] .reveal > h2,
+.scene[data-on="1"] .reveal > p,
+.scene[data-on="1"] .reveal > .note,
+.scene[data-on="1"] .reveal > .tag,
+.scene[data-on="1"] .reveal > div:not(.roles),
+.scene[data-on="1"] .reveal > button,
+.scene[data-on="1"] .reveal > .roles,
+.scene[data-on="1"] .stage > .roles,
+.scene[data-on="1"] .art,
+.scene[data-on="1"] .editor,
+.scene[data-on="1"] .demo,
+.scene[data-on="1"] .pattern-step {
+  animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.scene[data-on="1"] .reveal > h1,
+.scene[data-on="1"] .reveal > h2 {
+  animation-delay: 0.06s;
+}
+
+.scene[data-on="1"] .reveal > p {
+  animation-delay: 0.12s;
+}
+
+.scene[data-on="1"] .reveal > .note,
+.scene[data-on="1"] .reveal > .tag,
+.scene[data-on="1"] .reveal > div:not(.roles) {
+  animation-delay: 0.18s;
+}
+
+.scene[data-on="1"] .reveal > button,
+.scene[data-on="1"] .reveal > .roles,
+.scene[data-on="1"] .stage > .roles,
+.scene[data-on="1"] .pattern-step {
+  animation-delay: 0.22s;
+}
+
+.scene[data-on="1"] .pattern-step:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+.scene[data-on="1"] .pattern-step:nth-child(5) {
+  animation-delay: 0.42s;
+}
+
+.scene[data-on="1"] .art,
+.scene[data-on="1"] .editor,
+.scene[data-on="1"] .demo {
+  animation-delay: 0.12s;
+}
+
+.scene.compare[data-on="1"] .stage .editor {
+  animation-delay: 0.22s;
+}
+
+.scene[data-on="1"] .eyebrow:before {
+  animation: grow 0.55s ease backwards;
 }
 
 .scene.compare {
@@ -151,6 +245,7 @@ p strong {
   min-height: 0;
   height: 100%;
   overflow: hidden;
+  box-shadow: none;
 }
 
 .scene.compare pre {
@@ -166,9 +261,21 @@ p strong {
 .note {
   font-size: 15px;
   color: var(--orange);
-  border-left: 2px solid var(--orange);
-  padding-left: 15px;
+  border: 2px solid var(--orange);
+  border-radius: 3px 16px 4px 14px;
+  padding: 12px 14px;
   margin-top: 25px;
   line-height: 1.7;
   max-width: 410px;
+  background: #f3ab7014;
+  box-shadow: 4px 4px 0 #f3ab7030;
+  rotate: -0.6deg;
+  transition:
+    scale 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.note:hover {
+  scale: 1.03;
+  box-shadow: 7px 7px 0 #f3ab7055;
 }

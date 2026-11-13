@@ -24,11 +24,6 @@ export function OpeningScene({ onStart }: OpeningSceneProps) {
         <button className="primary" onClick={onStart}>
           Começar a história <span>↓</span>
         </button>
-        <div style={{ display: "block" }}>
-          <span className="tag">
-            TypeScript real <span>·</span> 7 min <span>·</span> no seu ritmo
-          </span>
-        </div>
       </div>
       <div className="stage">
         <CupStage

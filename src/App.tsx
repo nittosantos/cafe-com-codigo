@@ -1,3 +1,4 @@
+import { CursorGlow } from "./components/CursorGlow.tsx";
 import { Header } from "./components/Header.tsx";
 import { ProgressBar } from "./components/ProgressBar.tsx";
 import { SceneNav } from "./components/SceneNav.tsx";
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div ref={root}>
+      <CursorGlow />
       <ProgressBar current={current} total={TOTAL_CENAS} />
       <Header current={current} total={TOTAL_CENAS} />
       <SceneRail current={current} total={TOTAL_CENAS} onGo={go} />

@@ -81,6 +81,11 @@
   .ticket {
     padding: 10px;
     font-size: 11px;
+    max-width: 47%;
+  }
+
+  .t3 {
+    bottom: 14%;
   }
 
   .ticket b {
@@ -138,6 +143,12 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none;
   }
 }
 

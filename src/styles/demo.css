@@ -1,10 +1,13 @@
 .demo {
   width: 100%;
-  background: #ede8da;
+  background-color: #ede8da;
+  background-image: radial-gradient(#1b2c2112 1px, transparent 1px);
+  background-size: 7px 7px;
   color: #1b2c21;
-  border-radius: 12px;
+  border: 3px solid #1b2c21;
+  border-radius: 6px 18px 8px 14px;
   padding: 32px;
-  box-shadow: 0 30px 80px #0003;
+  box-shadow: 8px 8px 0 #0c1311;
 }
 
 .receipt-title {
@@ -29,11 +32,20 @@
   border-radius: 5px;
   background: transparent;
   color: #263b2c;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.options button:hover {
+  transform: translateY(-2px);
 }
 
 .options button.selected {
   background: #263b2c;
   color: #edf2df;
+  box-shadow: 3px 3px 0 #1b2c21;
 }
 
 .receipt {
@@ -43,6 +55,7 @@
   font: 15px/2 monospace;
   min-height: 120px;
   white-space: pre-wrap;
+  animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .pass {

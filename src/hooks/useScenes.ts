@@ -1,82 +1,86 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
 export function useScenes(total: number) {
   const root = useRef<HTMLDivElement>(null);
+  const last = useRef(-1);
   const [current, setCurrent] = useState(0);
+
+  const list = useCallback(() => {
+    return [...(root.current?.querySelectorAll<HTMLElement>(".scene") ?? [])];
+  }, []);
+
+  const mostVisible = useCallback(() => {
+    const height = window.innerHeight || 1;
+    let best = 0;
+    let area = -1;
+    list().forEach((scene, index) => {
+      const rect = scene.getBoundingClientRect();
+      const visible = Math.min(rect.bottom, height) - Math.max(rect.top, 0);
+      if (visible > area) {
+        area = visible;
+        best = index;
+      }
+    });
+    return best;
+  }, [list]);
+
+  const show = useCallback(
+    (index: number) => {
+      if (index === last.current) return;
+      last.current = index;
+      list().forEach((scene, i) => {
+        if (i === index) scene.dataset.on = "1";
+        else delete scene.dataset.on;
+      });
+      setCurrent(index);
+    },
+    [list],
+  );
 
   const go = useCallback(
     (n: number) => {
-      const scenes = root.current?.querySelectorAll<HTMLElement>(".scene");
-      if (!scenes?.length) return;
+      const scenes = list();
+      if (!scenes.length) return;
       const index = Math.max(0, Math.min(n, total - 1));
       const scene = scenes[index];
       if (!scene) return;
-      const top = scene.getBoundingClientRect().top + window.scrollY;
       const reduce = window.matchMedia(REDUCED_MOTION).matches;
       window.scrollTo({
-        top,
+        top: scene.getBoundingClientRect().top + window.scrollY,
         behavior: reduce ? "auto" : "smooth",
       });
+      const started = performance.now();
+      function watch() {
+        show(mostVisible());
+        if (mostVisible() === index || performance.now() - started > 2000) return;
+        requestAnimationFrame(watch);
+      }
+      requestAnimationFrame(watch);
     },
-    [total],
+    [list, mostVisible, show, total],
   );
 
-  useEffect(() => {
-    const container = root.current;
-    if (!container) return;
-    const scenes = [...container.querySelectorAll<HTMLElement>(".scene")];
-    scenes.forEach((scene, index) => {
+  useLayoutEffect(() => {
+    list().forEach((scene, index) => {
       scene.id = `cena-${index + 1}`;
     });
-    let last = -1;
-
     function update() {
-      const marker = window.innerHeight * 0.35;
-      let index = scenes.findIndex((scene) => {
-        const rect = scene.getBoundingClientRect();
-        return rect.top <= marker && rect.bottom > marker;
-      });
-      if (index < 0) {
-        let nearest = Infinity;
-        scenes.forEach((scene, i) => {
-          const distance = Math.abs(scene.getBoundingClientRect().top);
-          if (distance < nearest) {
-            nearest = distance;
-            index = i;
-          }
-        });
-      }
-      if (index < 0) return;
-      scenes[index]?.classList.add("active");
-      if (index === last) return;
-      last = index;
-      setCurrent(index);
+      show(mostVisible());
     }
-
     update();
     window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("scrollend", update);
     window.addEventListener("resize", update);
     return () => {
       window.removeEventListener("scroll", update);
+      window.removeEventListener("scrollend", update);
       window.removeEventListener("resize", update);
     };
-  }, [total]);
+  }, [list, mostVisible, show]);
 
   useEffect(() => {
-    function sceneOnScreen() {
-      const scenes = [
-        ...(root.current?.querySelectorAll<HTMLElement>(".scene") ?? []),
-      ];
-      const marker = window.innerHeight * 0.4;
-      const visible = scenes.findIndex((scene) => {
-        const rect = scene.getBoundingClientRect();
-        return rect.top <= marker && rect.bottom > marker;
-      });
-      return visible >= 0 ? visible : current;
-    }
-
     function onKey(event: KeyboardEvent) {
       const tag = (event.target as HTMLElement | null)?.tagName;
       if (tag && ["BUTTON", "INPUT", "TEXTAREA", "SELECT"].includes(tag)) {
@@ -94,7 +98,7 @@ export function useScenes(total: number) {
       }
       event.preventDefault();
       event.stopPropagation();
-      const index = sceneOnScreen();
+      const index = mostVisible();
       if (forward.includes(event.key)) go(index + 1);
       if (back.includes(event.key)) go(index - 1);
       if (event.key === "Home") go(0);
@@ -102,7 +106,7 @@ export function useScenes(total: number) {
     }
     document.addEventListener("keydown", onKey, true);
     return () => document.removeEventListener("keydown", onKey, true);
-  }, [current, go, total]);
+  }, [go, mostVisible, total]);
 
   return { root, current, go };
 }

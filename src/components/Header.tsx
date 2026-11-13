@@ -11,7 +11,7 @@ export function Header({ current, total }: HeaderProps) {
         {" café com código"}
       </div>
       <div className="meta">UMA HISTÓRIA DE REFATORAÇÃO</div>
-      <div className="topcount">
+      <div className="topcount" key={current}>
         {String(current + 1).padStart(2, "0")} / {total}
       </div>
     </header>

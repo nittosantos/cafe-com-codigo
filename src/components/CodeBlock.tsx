@@ -44,7 +44,13 @@ export function CodeBlock({
   return (
     <div className="editor">
       <div className="editorhead">
-        {dots ? <span className="dots">● ● ●</span> : null}
+        {dots ? (
+          <span className="dots" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
+        ) : null}
         <span>{title}</span>
       </div>
       <pre style={preStyle}>{children}</pre>

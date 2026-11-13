@@ -65,7 +65,7 @@ export function SimulationScene() {
               Latte
             </button>
           </div>
-          <div className="receipt" aria-live="polite">
+          <div className="receipt" key={drink} aria-live="polite">
             {receipt}
           </div>
           <div className="pass">{checks}</div>
