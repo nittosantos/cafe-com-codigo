@@ -1,0 +1,158 @@
+@media (min-width: 1500px) {
+  .scene {
+    padding-left: 13vw;
+    padding-right: 13vw;
+  }
+}
+
+@media (max-width: 760px) {
+  header {
+    height: 70px;
+  }
+
+  .meta {
+    display: none;
+  }
+
+  .scene {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 95px 8vw 95px;
+    align-content: center;
+    min-height: 100svh;
+  }
+
+  .scene.compare {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    padding-top: 95px;
+    padding-bottom: 95px;
+  }
+
+  .scene.compare pre {
+    height: auto;
+    min-height: 180px;
+    max-height: 42vh;
+  }
+
+  h1,
+  h2 {
+    font-size: 38px;
+    letter-spacing: -2px;
+    margin: 17px 0;
+  }
+
+  p {
+    font-size: 19px;
+    line-height: 1.65;
+    margin: 10px 0;
+  }
+
+  .stage {
+    min-height: 260px;
+  }
+
+  .art {
+    max-width: 310px;
+  }
+
+  .cup {
+    width: 80px;
+    height: 95px;
+    font-size: 32px;
+  }
+
+  .cup:after {
+    width: 25px;
+    height: 35px;
+    border-width: 9px;
+    right: -23px;
+  }
+
+  .cup:before {
+    font-size: 66px;
+    top: -48px;
+    left: 28px;
+  }
+
+  .ticket {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .ticket b {
+    font-size: 15px;
+  }
+
+  .saucer {
+    width: 130px;
+  }
+
+  .rail {
+    right: 12px;
+  }
+
+  .tag {
+    margin-top: 10px;
+  }
+
+  .primary {
+    margin-top: 15px;
+    padding: 12px 17px;
+  }
+
+  pre {
+    font-size: 13px;
+    padding: 16px;
+    min-height: 210px;
+  }
+
+  .editorhead {
+    padding: 12px;
+  }
+
+  .note {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  .role {
+    padding: 8px 8px;
+  }
+
+  .role b {
+    font-size: 14px;
+  }
+
+  .hint {
+    font-size: 11px;
+  }
+
+  .demo {
+    padding: 22px;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

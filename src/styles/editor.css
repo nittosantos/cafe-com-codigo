@@ -1,0 +1,75 @@
+.editor {
+  width: 100%;
+  background: #0c1311;
+  border: 1px solid #344239;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px #0003;
+  overflow: hidden;
+}
+
+.editorhead {
+  padding: 16px 20px;
+  border-bottom: 1px solid #26362b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 14px monospace;
+  color: #9cac9c;
+}
+
+.dots {
+  color: #71865c;
+  letter-spacing: 3px;
+}
+
+pre {
+  margin: 0;
+  padding: 24px;
+  font:
+    15px/1.9 "SFMono-Regular",
+    Consolas,
+    monospace;
+  overflow: auto;
+  tab-size: 2;
+  min-height: 270px;
+  color: #d8e0d3;
+}
+
+.kw {
+  color: #d4ef8a;
+}
+
+.str {
+  color: #edbc89;
+}
+
+.comment {
+  color: #6d8a78;
+}
+
+.added {
+  display: block;
+  background: #b6e57710;
+  border-left: 2px solid var(--lime);
+  margin-left: -12px;
+  padding-left: 10px;
+}
+
+.deleted {
+  color: #ca9586;
+  text-decoration: line-through;
+}
+
+.footcode {
+  border-top: 1px solid #26362b;
+  padding: 12px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footcode b {
+  color: var(--lime);
+  font-weight: 400;
+}
