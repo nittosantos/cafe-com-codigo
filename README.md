@@ -2,7 +2,7 @@
 
 Uma história interativa sobre uma cafeteria que cresceu e um código que precisa crescer junto. O assunto é o padrão **Strategy**: separar o que o pedido precisa fazer de como isso acontece.
 
-São 12 cenas. A metáfora é o café. O exemplo é um pedido em TypeScript. No fim, a mesma compra continua valendo R$ 32, e o canal do aviso pode ser trocado sem reescrever a regra do pedido.
+São 15 cenas. A metáfora é o café. O exemplo é um pedido em TypeScript. No fim, a mesma compra continua valendo R$ 32, e o canal do aviso pode ser trocado sem reescrever a regra do pedido.
 
 ## O objetivo
 
@@ -20,7 +20,7 @@ No café, o pedido precisa avisar o cliente. O aviso pode sair no balcão, por m
 
 No código, isso vira um contrato. A função `finalizarPedido` recebe `notificar`, uma função que aceita uma mensagem. Essa função é a estratégia. Dentro do pedido, a chamada é sempre a mesma. Fora dele, `console.log`, um e-mail ou um WhatsApp podem ocupar o mesmo lugar.
 
-O que isso resolve: o canal muda e a regra do pedido continua. Não é preciso reescrever o cálculo, nem espalhar `if` para cada forma de avisar. A simulação da penúltima cena executa essas funções de verdade, só na máquina de quem assiste. Nenhum aviso sai para fora.
+O que isso resolve: o canal muda e a regra do pedido continua. Não é preciso reescrever o cálculo, nem espalhar `if` para cada forma de avisar. A simulação executa essas funções de verdade, só na máquina de quem assiste. Nenhum aviso sai para fora.
 
 O cardápio aberto e o cálculo extraído não são o Strategy. Eles tiram preço e soma de dentro da função, para que a última mudança — o aviso — fique visível. Se um dia cada bebida tiver uma regra própria de preço, o mesmo desenho serve de novo: o cálculo recebe a forma, em vez de conhecê-la.
 
@@ -28,7 +28,9 @@ O cardápio aberto e o cálculo extraído não são o Strategy. Eles tiram preç
 
 A história começa antes do código: um espresso, dois cappuccinos, o movimento aumentando. Em seguida nomeia o que é um padrão — uma solução reconhecível para um problema que se repete, para adaptar, não para copiar — e apresenta o Strategy com a imagem do aviso.
 
-Depois o barista aparece fazendo tudo. O código desse caos é uma função só. A refatoração tira o cálculo dali, abre o cardápio como dado (o latte entra sem um `if` novo) e, por último, troca o `console.log` fixo pela estratégia `notificar`. O antes e o depois ficam lado a lado. O pedido original segue em R$ 32.
+Depois o barista aparece fazendo tudo. O código desse caos é uma função só. A refatoração tira o cálculo dali, abre o cardápio como dado (o latte entra sem um `if` novo) e, por último, troca o `console.log` fixo pela estratégia `notificar`. Um diagrama de classes nomeia o contexto, o contrato e as formas concretas. O antes e o depois ficam lado a lado. O pedido original segue em R$ 32.
+
+A simulação roda o exemplo. Em seguida a história nomeia manutenção, reutilização e evolução, e também quando o Strategy só aumenta a complexidade. O mesmo desenho aparece num caixa: Pix, cartão ou boleto.
 
 A última cena resume o que levar: o aviso pode mudar; o pedido, não. Dali também dá para baixar um arquivo TypeScript independente, `cafe-refatorado.ts`, com o exemplo já refatorado.
 

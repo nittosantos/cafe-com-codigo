@@ -5,6 +5,7 @@
   border-radius: 6px 16px 10px 6px;
   box-shadow: 7px 7px 0 #000a;
   overflow: hidden;
+  cursor: pointer;
   transition:
     border-color 0.22s ease,
     box-shadow 0.22s ease;
@@ -19,9 +20,18 @@
   border-bottom: 1px solid #26362b;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font: 14px monospace;
   color: #9cac9c;
+  gap: 12px;
+}
+
+.ampliar {
+  margin-left: auto;
+  color: var(--lime);
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .dots {
@@ -49,13 +59,49 @@ pre {
   margin: 0;
   padding: 24px;
   font:
-    15px/1.9 "SFMono-Regular",
+    20px/1.7 "SFMono-Regular",
     Consolas,
     monospace;
   overflow: auto;
   tab-size: 2;
   min-height: 270px;
   color: #d8e0d3;
+}
+
+.code-modal {
+  width: 80vw;
+  max-width: 80vw;
+  max-height: calc(100svh - 40px);
+  margin: auto;
+  padding: 0;
+  border: 2px solid var(--lime);
+  border-radius: 8px;
+  background: #0c1311;
+  color: #d8e0d3;
+  box-shadow: 12px 12px 0 #000c;
+}
+
+.code-modal::backdrop {
+  background: #070d0bcc;
+}
+
+.code-modal pre {
+  min-height: 0;
+  max-height: calc(100svh - 150px);
+  font-size: clamp(26px, 2.8vw, 40px);
+  line-height: 1.55;
+}
+
+.code-close {
+  margin-left: auto;
+  border: 2px solid var(--lime);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--lime);
+  padding: 6px 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font: 12px monospace;
 }
 
 .kw {

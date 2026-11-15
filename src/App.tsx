@@ -5,8 +5,11 @@ import { SceneNav } from "./components/SceneNav.tsx";
 import { SceneRail } from "./components/SceneRail.tsx";
 import { useScenes } from "./hooks/useScenes.ts";
 import {
+  AdvantagesScene,
   BeforeScene,
+  CareScene,
   ChaosScene,
+  ClassDiagramScene,
   ClosingScene,
   CompareScene,
   DependencyInversionScene,
@@ -39,8 +42,11 @@ export default function App() {
         <SingleResponsibilityScene />
         <OpenClosedScene />
         <DependencyInversionScene />
+        <ClassDiagramScene />
         <CompareScene />
         <SimulationScene />
+        <AdvantagesScene />
+        <CareScene />
         <ClosingScene onRestart={() => go(0)} />
       </main>
       <SceneNav

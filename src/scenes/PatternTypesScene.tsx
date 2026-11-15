@@ -33,12 +33,12 @@ export function PatternTypesScene() {
           delas.
         </p>
         <div className="note">
-          Comportamento: o Strategy, que acabamos de ver. Ele troca o aviso sem
-          mexer no pedido.
+          Comportamento: o Strategy, que acabamos de ver, é um padrão GoF dessa
+          família. Ele troca o aviso sem mexer no pedido.
         </div>
       </div>
       <div className="stage">
-        <div className="roles">
+        <div className="roles families">
           {families.map((family) => (
             <div className="role" key={family.title}>
               <span>{family.icon}</span>

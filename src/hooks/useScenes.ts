@@ -82,7 +82,10 @@ export function useScenes(total: number) {
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      const tag = (event.target as HTMLElement | null)?.tagName;
+      const target = event.target as HTMLElement | null;
+      if (document.body.dataset.codeOpen === "1") return;
+      if (target?.closest(".editor, .code-modal")) return;
+      const tag = target?.tagName;
       if (tag && ["BUTTON", "INPUT", "TEXTAREA", "SELECT"].includes(tag)) {
         return;
       }

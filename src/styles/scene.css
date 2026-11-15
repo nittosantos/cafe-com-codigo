@@ -152,7 +152,7 @@ p strong {
 .scene[data-on="1"] .reveal > div:not(.roles),
 .scene[data-on="1"] .reveal > button,
 .scene[data-on="1"] .reveal > .roles,
-.scene[data-on="1"] .stage > .roles,
+.scene[data-on="1"] .stage > .roles:not(.families),
 .scene[data-on="1"] .art,
 .scene[data-on="1"] .editor,
 .scene[data-on="1"] .demo,
@@ -177,7 +177,7 @@ p strong {
 
 .scene[data-on="1"] .reveal > button,
 .scene[data-on="1"] .reveal > .roles,
-.scene[data-on="1"] .stage > .roles,
+.scene[data-on="1"] .stage > .roles:not(.families),
 .scene[data-on="1"] .pattern-step {
   animation-delay: 0.22s;
 }
@@ -254,7 +254,7 @@ p strong {
   min-height: 0;
   max-height: none;
   overflow: auto;
-  font-size: 13px;
+  font-size: 17px;
   line-height: 1.55;
 }
 

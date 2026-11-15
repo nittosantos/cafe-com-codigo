@@ -54,6 +54,93 @@ a:focus-visible {
   }
 }
 
+@keyframes deal {
+  0% {
+    scale: 0.72;
+    translate: 0 40px;
+  }
+  65% {
+    scale: 1.07;
+    translate: 0 -8px;
+  }
+  100% {
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes settle {
+  0% {
+    scale: 0.96;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes drift-soft {
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@keyframes tilt-a {
+  50% {
+    rotate: 0.4deg;
+    translate: 0 -5px;
+  }
+}
+
+@keyframes tilt-b {
+  50% {
+    rotate: -0.4deg;
+    translate: 0 -5px;
+  }
+}
+
+@keyframes tilt-c {
+  50% {
+    rotate: 0.3deg;
+    translate: 0 -5px;
+  }
+}
+
+@keyframes sway-a {
+  0%,
+  100% {
+    rotate: -2.2deg;
+    translate: 0 0;
+  }
+  50% {
+    rotate: 1.4deg;
+    translate: 0 -16px;
+  }
+}
+
+@keyframes sway-b {
+  0%,
+  100% {
+    rotate: 2deg;
+    translate: 0 -8px;
+  }
+  50% {
+    rotate: -1.2deg;
+    translate: 0 8px;
+  }
+}
+
+@keyframes sway-c {
+  0%,
+  100% {
+    rotate: -0.8deg;
+    translate: 0 6px;
+  }
+  50% {
+    rotate: 2.4deg;
+    translate: 0 -14px;
+  }
+}
+
 @keyframes steam {
   50% {
     opacity: 0.2;

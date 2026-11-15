@@ -150,6 +150,56 @@
   justify-content: center;
 }
 
+.stage > .roles {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.stage > .roles .role,
+.stage > .roles .role:nth-child(2),
+.stage > .roles .role:nth-child(3) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 18px;
+  row-gap: 4px;
+  align-items: center;
+  text-align: left;
+  padding: 22px 26px;
+  animation: drift-soft 6.5s ease-in-out infinite;
+  rotate: 0deg;
+}
+
+.stage > .roles .role:nth-child(2) {
+  animation-delay: -2.1s;
+}
+
+.stage > .roles .role:nth-child(3) {
+  animation-delay: -4.2s;
+}
+
+.stage > .roles .role span {
+  grid-row: 1 / span 2;
+  margin: 0;
+  font-size: 52px;
+}
+
+.stage > .roles .role b,
+.stage > .roles .role small {
+  grid-column: 2;
+}
+
+.stage > .roles .role b {
+  font-size: 26px;
+}
+
+.stage > .roles .role small {
+  max-width: 36ch;
+  margin-top: 4px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
 .reveal .roles {
   margin-top: 28px;
 }
@@ -216,6 +266,38 @@
   animation-delay: -2s;
 }
 
+.scene[data-on="1"] .families .role {
+  animation:
+    deal 0.7s cubic-bezier(0.22, 1.2, 0.36, 1) backwards,
+    sway-a 4.6s ease-in-out 0.7s infinite;
+}
+
+.scene[data-on="1"] .families .role:nth-child(2) {
+  animation-delay: 0.14s, 0.84s;
+  animation-name: deal, sway-b;
+}
+
+.scene[data-on="1"] .families .role:nth-child(3) {
+  animation-delay: 0.28s, 0.98s;
+  animation-name: deal, sway-c;
+}
+
+.scene[data-on="1"] .stage > .families .role {
+  animation:
+    settle 0.55s ease backwards,
+    tilt-a 4.6s ease-in-out 0.55s infinite;
+}
+
+.scene[data-on="1"] .stage > .families .role:nth-child(2) {
+  animation-delay: 0.1s, 0.65s;
+  animation-name: settle, tilt-b;
+}
+
+.scene[data-on="1"] .stage > .families .role:nth-child(3) {
+  animation-delay: 0.2s, 0.75s;
+  animation-name: settle, tilt-c;
+}
+
 .pattern-flow {
   display: flex;
   flex-direction: column;
@@ -271,6 +353,329 @@
 .pattern-step p {
   font-size: 18px;
   margin: 0;
+}
+
+@keyframes light-pedido {
+  0%,
+  18%,
+  100% {
+    box-shadow: 4px 4px 0 #101a17;
+    border-color: var(--lime);
+  }
+  4%,
+  12% {
+    box-shadow:
+      4px 4px 0 #101a17,
+      0 0 22px #d1ef83dd;
+    border-color: #f4ffd0;
+  }
+}
+
+@keyframes light-drop {
+  0%,
+  16% {
+    top: 0;
+    opacity: 0;
+  }
+  22% {
+    opacity: 1;
+  }
+  34% {
+    top: calc(100% - 2px);
+    opacity: 1;
+  }
+  40%,
+  100% {
+    top: calc(100% - 2px);
+    opacity: 0;
+  }
+}
+
+@keyframes light-iface {
+  0%,
+  36%,
+  56%,
+  100% {
+    box-shadow: 4px 4px 0 #101a17;
+    border-color: var(--orange);
+  }
+  42%,
+  50% {
+    box-shadow:
+      4px 4px 0 #101a17,
+      0 0 22px #f3ab70dd;
+    border-color: #ffe1c4;
+  }
+}
+
+@keyframes light-a {
+  0%,
+  58%,
+  74%,
+  100% {
+    box-shadow: 4px 4px 0 #101a17;
+    border-color: var(--lime);
+  }
+  64%,
+  68% {
+    box-shadow:
+      4px 4px 0 #101a17,
+      0 0 18px #d1ef83dd;
+    border-color: #f4ffd0;
+  }
+}
+
+@keyframes light-b {
+  0%,
+  70%,
+  86%,
+  100% {
+    box-shadow: 4px 4px 0 #101a17;
+    border-color: var(--lime);
+  }
+  76%,
+  80% {
+    box-shadow:
+      4px 4px 0 #101a17,
+      0 0 18px #d1ef83dd;
+    border-color: #f4ffd0;
+  }
+}
+
+@keyframes light-c {
+  0%,
+  82%,
+  98%,
+  100% {
+    box-shadow: 4px 4px 0 #101a17;
+    border-color: var(--lime);
+  }
+  88%,
+  92% {
+    box-shadow:
+      4px 4px 0 #101a17,
+      0 0 18px #d1ef83dd;
+    border-color: #f4ffd0;
+  }
+}
+
+.uml {
+  --passo: 7.5s;
+  width: 100%;
+  max-width: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scene[data-on="1"] .uml > .uml-box:not(.iface) {
+  animation: light-pedido var(--passo) linear infinite;
+}
+
+.scene[data-on="1"] .uml > .uml-box.iface {
+  animation: light-iface var(--passo) linear infinite;
+}
+
+.scene[data-on="1"] .uml-use i {
+  animation: light-drop var(--passo) linear infinite;
+}
+
+.scene[data-on="1"] .uml-leaf:nth-child(1) .uml-box {
+  animation: light-a var(--passo) linear infinite;
+}
+
+.scene[data-on="1"] .uml-leaf:nth-child(2) .uml-box {
+  animation: light-b var(--passo) linear infinite;
+}
+
+.scene[data-on="1"] .uml-leaf:nth-child(3) .uml-box {
+  animation: light-c var(--passo) linear infinite;
+}
+
+.uml-box {
+  width: min(100%, 250px);
+  border: 2px solid var(--lime);
+  background: #1c2b23;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px 12px 12px;
+  box-shadow: 4px 4px 0 #101a17;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.uml-box:hover {
+  border-color: var(--paper);
+  box-shadow: 6px 6px 0 #101a17;
+}
+
+.uml-box small {
+  display: block;
+  color: var(--lime);
+  letter-spacing: 1.4px;
+  font-size: 12px;
+}
+
+.uml-box b {
+  display: block;
+  margin: 4px 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #40513d;
+  font:
+    22px Space Grotesk,
+    sans-serif;
+  font-weight: 500;
+}
+
+.uml-box span {
+  display: block;
+  color: var(--muted);
+  font:
+    14px ui-monospace,
+    monospace;
+}
+
+.uml-box.iface {
+  border-style: dashed;
+  border-color: var(--orange);
+}
+
+.uml-use {
+  position: relative;
+  width: 2px;
+  height: 36px;
+  margin: 8px 0 10px;
+  background: var(--lime);
+}
+
+.uml-use:before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  translate: -50% 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--lime);
+}
+
+.uml-use:after {
+  content: "chama";
+  position: absolute;
+  left: 14px;
+  top: 4px;
+  color: var(--lime);
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.uml-use i {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #f4ffd0;
+  box-shadow: 0 0 12px var(--lime);
+  opacity: 0;
+}
+
+.uml-implements {
+  position: relative;
+  width: 100%;
+  padding-top: 34px;
+}
+
+.uml-implements:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 2px;
+  height: 24px;
+  background: var(--lime);
+  translate: -50% 0;
+}
+
+.uml-implements:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid var(--lime);
+}
+
+.uml-rel {
+  position: absolute;
+  top: 6px;
+  left: calc(50% + 16px);
+  color: var(--orange);
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.uml-caption {
+  margin: 16px 0 0;
+  max-width: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--paper);
+}
+
+.uml-tree {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.uml-tree:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16.6%;
+  right: 16.6%;
+  height: 2px;
+  background: var(--lime);
+}
+
+.uml-leaf {
+  position: relative;
+}
+
+.uml-leaf:before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 2px;
+  height: 16px;
+  background: var(--lime);
+  translate: -50% 0;
+}
+
+.uml-leaf .uml-box {
+  width: 100%;
+  padding: 8px 6px 10px;
+}
+
+.uml-leaf .uml-box b {
+  font-size: 16px;
+}
+
+.uml-leaf .uml-box small,
+.uml-leaf .uml-box span {
+  font-size: 11px;
 }
 
 .pattern-arrow {

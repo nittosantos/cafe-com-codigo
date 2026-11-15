@@ -1,4 +1,7 @@
+export { AdvantagesScene } from "./AdvantagesScene.tsx";
 export { BeforeScene } from "./BeforeScene.tsx";
+export { CareScene } from "./CareScene.tsx";
+export { ClassDiagramScene } from "./ClassDiagramScene.tsx";
 export { ChaosScene } from "./ChaosScene.tsx";
 export { CompareScene } from "./CompareScene.tsx";
 export { ClosingScene } from "./ClosingScene.tsx";
@@ -11,4 +14,4 @@ export { StrategyScene } from "./StrategyScene.tsx";
 export { SingleResponsibilityScene } from "./SingleResponsibilityScene.tsx";
 export { WhatIsPatternScene } from "./WhatIsPatternScene.tsx";
 
-export const TOTAL_CENAS = 12;
+export const TOTAL_CENAS = 15;

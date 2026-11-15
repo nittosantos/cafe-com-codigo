@@ -10,7 +10,7 @@ export function ClosingScene({ onRestart }: ClosingSceneProps) {
   return (
     <Scene>
       <div className="reveal">
-        <div className="eyebrow">12 · leve isso com você</div>
+        <div className="eyebrow">15 · leve isso com você</div>
         <h2>
           O aviso pode mudar.
           <br />

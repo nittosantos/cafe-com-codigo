@@ -110,7 +110,7 @@
   }
 
   pre {
-    font-size: 13px;
+    font-size: 16px;
     padding: 16px;
     min-height: 210px;
   }
@@ -126,6 +126,38 @@
 
   .role {
     padding: 8px 8px;
+  }
+
+  .stage > .roles {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .stage > .roles .role {
+    display: block;
+    text-align: center;
+    padding: 14px 8px;
+  }
+
+  .stage > .roles .role span,
+  .stage > .roles .role b,
+  .stage > .roles .role small {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .stage > .roles .role span {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+
+  .stage > .roles .role b {
+    font-size: 14px;
+  }
+
+  .stage > .roles .role small {
+    font-size: 12px;
+    margin-top: 4px;
   }
 
   .role b {

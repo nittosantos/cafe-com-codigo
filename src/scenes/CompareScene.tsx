@@ -5,7 +5,7 @@ export function CompareScene() {
   return (
     <Scene className="compare">
       <div className="compare-head reveal">
-        <div className="eyebrow">10 · lado a lado</div>
+        <div className="eyebrow">11 · lado a lado</div>
         <p>
           O mesmo pedido, <strong>R$ 32</strong>. Os comentários marcam o que
           mudou. O da esquerda é menor. É aí que mora o problema.
