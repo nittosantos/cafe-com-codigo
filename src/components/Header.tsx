@@ -8,7 +8,7 @@ export function Header({ current, total }: HeaderProps) {
     <header>
       <div className="brand">
         <i>☕</i>
-        {" café com código"}
+        {" <Café com Código />"}
       </div>
       <div className="meta">UMA HISTÓRIA DE REFATORAÇÃO</div>
       <div className="topcount" key={current}>
