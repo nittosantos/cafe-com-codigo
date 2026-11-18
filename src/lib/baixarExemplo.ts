@@ -1,7 +1,8 @@
-import { cardapio, pedidoOriginal } from "../domain/pedidos.ts";
+import { cardapio } from "../domain/pedidos.ts";
 
 export function baixarExemplo(): void {
   const code = `// Execute com Node.js: node --experimental-strip-types cafe-refatorado.ts
+// Pergunta a bebida e a quantidade. Digite fim para fechar o pedido.
 type Item = { tipo: string; quantidade: number };
 type Cardapio = Record<string, number>;
 type Notificar = (mensagem: string) => void;
@@ -28,9 +29,44 @@ function finalizarPedido(
   return total;
 }
 
-const itens: Item[] = ${JSON.stringify(pedidoOriginal, null, 2)};
-const total = finalizarPedido(itens, cardapio, console.log);
-if (total !== 32) throw new Error("Total incorreto");
+async function pedir(): Promise<void> {
+  const { createInterface } = await import("node:readline/promises");
+  const { stdin, stdout } = await import("node:process");
+  const rl = createInterface({ input: stdin, output: stdout });
+
+  console.log("Cardápio:");
+  for (const [bebida, preco] of Object.entries(cardapio)) {
+    console.log(\`  \${bebida}  R$ \${preco}\`);
+  }
+  console.log("\\nMonte o pedido. Quando acabar, digite fim.");
+
+  const itens: Item[] = [];
+  while (true) {
+    const tipo = (await rl.question("Qual bebida? ")).trim().toLowerCase();
+    if (tipo === "fim") break;
+    if (cardapio[tipo] === undefined) {
+      console.log("Essa bebida não está no cardápio.");
+      continue;
+    }
+    const quantidade = Number((await rl.question("Quantas? ")).trim());
+    if (!Number.isInteger(quantidade) || quantidade < 1) {
+      console.log("A quantidade precisa ser um inteiro maior que zero.");
+      continue;
+    }
+    itens.push({ tipo, quantidade });
+  }
+
+  rl.close();
+
+  if (itens.length === 0) {
+    console.log("Nenhum item no pedido.");
+    return;
+  }
+
+  finalizarPedido(itens, cardapio, console.log);
+}
+
+pedir();
 `;
   const url = URL.createObjectURL(
     new Blob([code], { type: "text/typescript" }),
